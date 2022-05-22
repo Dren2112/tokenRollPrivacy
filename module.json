@@ -6,6 +6,6 @@
   "version": "1.0.0",
   "minimumCoreVersion": "9",
   "scripts": [
-    "HelloWorld.js"
+    "scripts/HelloWorld.js"
   ]
 }
