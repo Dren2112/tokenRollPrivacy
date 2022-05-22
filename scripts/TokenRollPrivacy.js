@@ -1,4 +1,7 @@
-console.log("Token Roll Privacy Init - 0.06")
+console.log("Token Roll Privacy Init - 0.07")
+Hooks.on("ready", function(){
+    test.Test();
+});
 
 class TokenRollPrivacy extends FormApplication {
 
@@ -10,6 +13,12 @@ class TokenRollPrivacy extends FormApplication {
         let titleElement = html.closest('.app').find('.window-title');
         diaBtn.insertAfter(titleElement);
     }
+}
+
+class test extends Actor{
+    static Test(){
+        console.log(JDON.stringify(this.getRollData()))
+}
 }
 
     Hooks.on('renderActorSheet', (app, html, data) => {
