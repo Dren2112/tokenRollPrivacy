@@ -8,5 +8,6 @@
   "scripts": [
     "scripts/HelloWorld.js"
   ],
-  "manifest": "https://github.com/Dren2112/tokenRollPrivacy"
+  "manifest": "https://github.com/Dren2112/tokenRollPrivacy",
+  "download": "https://github.com/Dren2112/tokenRollPrivacy/archive/refs/tags/HelloWorld.zip"
 }
