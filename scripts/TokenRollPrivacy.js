@@ -17,7 +17,7 @@ class TokenRollPrivacy extends FormApplication {
 
 class test extends Actor{
     static Test(){
-        console.log(JDON.stringify(this.getRollData()))
+        console.log(JSON.stringify(this.getRollData()))
 }
 }
 
