@@ -6,6 +6,9 @@ class TokenRollPrivacy extends FormApplication {
 
         let diaBtn = $(`<a class="open-dia" title="Roll Privacy" > "Roll Privacy" </a>`)
         diaBtn.onclick = console.log("Button Clicked Woo!")
+
+        let titleElement = html.closest('.app').find('.window-title');
+        diaBtn.insertAfter(titleElement);
     }
 }
 
