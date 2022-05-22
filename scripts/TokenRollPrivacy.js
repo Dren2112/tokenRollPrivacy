@@ -1,0 +1,15 @@
+class TokenRollPrivacy extends FormApplication{
+
+    static _initButton(app, html, data) {
+        let diaBtn = $(`<a class="open-dia" title="Roll Privacy" ></a>`)
+        diaBtn.onclick = console.log("Button Clicked Woo!")
+
+
+        Hooks.on('renderActorSheet', (app, html, data) => {
+            TokenRollPrivacy._initButton(app, html, data);
+        });
+}}
+
+
+
+

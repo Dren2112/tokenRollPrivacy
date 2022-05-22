@@ -6,8 +6,8 @@
   "version": "1.0.0",
   "minimumCoreVersion": "9",
   "scripts": [
-    "scripts/HelloWorld.js"
+    "scripts/TokenRollPrivacy.js"
   ],
-  "manifest": "https://github.com/Dren2112/tokenRollPrivacy",
+  "manifest": "https://raw.githubusercontent.com/Dren2112/tokenRollPrivacy/master/module.json",
   "download": "https://github.com/Dren2112/tokenRollPrivacy/archive/refs/tags/HelloWorld.zip"
 }
