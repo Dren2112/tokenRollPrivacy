@@ -1,0 +1,11 @@
+{
+  "name": "Token-Roll-Privacy",
+  "title": "Token Roll Privacy - A module for DnD5e",
+  "description": "A module that allows users to set default roll privacy for each token",
+  "author": "Dren",
+  "version": "1.0.0",
+  "minimumCoreVersion": "9",
+  "scripts": [
+    "HelloWorld.js"
+  ]
+}
