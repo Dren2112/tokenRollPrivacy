@@ -7,5 +7,6 @@
   "minimumCoreVersion": "9",
   "scripts": [
     "scripts/HelloWorld.js"
-  ]
+  ],
+  "manifest": "https://github.com/Dren2112/tokenRollPrivacy"
 }
