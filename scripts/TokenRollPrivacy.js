@@ -1,4 +1,4 @@
-console.log("Token Roll Privacy Init")
+console.log("Token Roll Privacy Init - 0.05")
 
 class TokenRollPrivacy extends FormApplication {
 
