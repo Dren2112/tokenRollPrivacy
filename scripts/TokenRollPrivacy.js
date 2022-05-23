@@ -7,6 +7,10 @@ console.log("Token Roll Privacy Init")
 
 class TokenRollPrivacy extends FormApplication {
 
+    Private = [];
+    Blind = [];
+    Self = [];
+
     static remove(ID, Array){
         let Index = Array.indexOf(ID)
 
@@ -19,9 +23,7 @@ class TokenRollPrivacy extends FormApplication {
     }
 
     static _initButton(app, html, data) {
-        let Private = [];
-        let Blind = [];
-        let Self = [];
+
 
         let ID = app.appId;
         let diaBtn = $(`<a class="open-dia" title="Roll Privacy" ><i class ="fas fa-dice-d20"></i> Roll Privacy </a>`)
@@ -39,42 +41,76 @@ class TokenRollPrivacy extends FormApplication {
                 none: {
                     label: "Default",
                     callback: () => {
-                        Private =this.remove(ID, Private)
-                        Blind =this.remove(ID, Blind)
-                        Self =this.remove(ID, Self)
+                        TokenRollPrivacy.Private =this.remove(ID, Private)
+                        TokenRollPrivacy.Blind =this.remove(ID, Blind)
+                        TokenRollPrivacy.Self =this.remove(ID, Self)
                     }
                 },
                 Private_GM: {
                     label: "Private GM",
                     callback: () => {
-                        Private =this.remove(ID, Private)
-                        Blind =this.remove(ID, Blind)
-                        Self =this.remove(ID, Self)
+                        TokenRollPrivacy.Private =this.remove(ID, Private)
+                        TokenRollPrivacy.Blind =this.remove(ID, Blind)
+                        TokenRollPrivacy.Self =this.remove(ID, Self)
 
-                        Private.push(ID);
+                        TokenRollPrivacy.Private.push(ID);
                         console.log(Private[0])
                     }
                 },
                 Blind: {
                     label: "Blind GM",
                     callback: () => {
-                        Private =this.remove(ID, Private)
-                        Blind =this.remove(ID, Blind)
-                        Self =this.remove(ID, Self)
+                        TokenRollPrivacy.Private =this.remove(ID, Private)
+                        TokenRollPrivacy.Blind =this.remove(ID, Blind)
+                        TokenRollPrivacy.Self =this.remove(ID, Self)
 
-                        Blind.push(ID);
+                        TokenRollPrivacy.Blind.push(ID);
                     }
                 },
                 self: {
                     label: "Self",
                     callback: () => {
-                        Self.push(ID);
+                        TokenRollPrivacy.Private =this.remove(ID, Private)
+                        TokenRollPrivacy.Blind =this.remove(ID, Blind)
+                        TokenRollPrivacy.Self =this.remove(ID, Self)
+
+                        TokenRollPrivacy.Self.push(ID);
                     }
                 }
             },
             default: "none",
 
         });
+
+    }
+    static override(msg){
+        if(TokenRollPrivacy.Private.includes(number(msg.speaker.actor))){
+            let GMs = ChatMessage.getWhisperRecipients("GM");
+            let GMIds = GMs.map((u) => u.data._id);
+            let updates = {
+                whisper: GMIds,
+            };
+            msg.data.update(updates);
+            console.log("message made private")
+        }
+        if(TokenRollPrivacy.Blind.includes(number(msg.speaker.actor))){
+            let GMs = ChatMessage.getWhisperRecipients("GM");
+            let GMIds = GMs.map((u) => u.data._id);
+            let updates = {
+                blind: true,
+                whisper: GMIds,
+            };
+            msg.data.update(updates);
+            console.log("message made blind")
+        }
+        if(TokenRollPrivacy.Self.includes(number())){
+            let updates = {
+                blind: true,
+                whisper: msg.user,
+            };
+            msg.data.update(updates);
+            console.log("message made to self")
+        }
     }
 
 }
@@ -84,7 +120,7 @@ class TokenRollPrivacy extends FormApplication {
     });
 
     Hooks.on("preCreateChatMessage", (msg, options, userId) => {
-        console.log("CHAT MESSAGE PRECREATED")
+        TokenRollPrivacy.override(msg);
     });
 
 

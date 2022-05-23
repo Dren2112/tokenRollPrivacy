@@ -3,7 +3,7 @@
   "title": "Token Roll Privacy - A module for DnD5e",
   "description": "A module that allows users to set default roll privacy for each token",
   "author": "Dren",
-  "version": "0.29",
+  "version": "0.30",
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "scripts": [
