@@ -7,9 +7,9 @@ console.log("Token Roll Privacy Init")
 
 class TokenRollPrivacy extends FormApplication {
 
-    Private = [];
-    Blind = [];
-    Self = [];
+    static Private = [];
+    static Blind = [];
+    static Self = [];
 
     static remove(ID, Array){
         let Index = Array.indexOf(ID)
@@ -41,28 +41,27 @@ class TokenRollPrivacy extends FormApplication {
                 none: {
                     label: "Default",
                     callback: () => {
-                        TokenRollPrivacy.Private =this.remove(ID, Private)
-                        TokenRollPrivacy.Blind =this.remove(ID, Blind)
-                        TokenRollPrivacy.Self =this.remove(ID, Self)
+                        TokenRollPrivacy.Private = this.remove(ID, TokenRollPrivacy.Private)
+                        TokenRollPrivacy.Blind = this.remove(ID, TokenRollPrivacy.Blind)
+                        TokenRollPrivacy.Self = this.remove(ID, TokenRollPrivacy.Self)
                     }
                 },
                 Private_GM: {
                     label: "Private GM",
                     callback: () => {
-                        TokenRollPrivacy.Private =this.remove(ID, Private)
-                        TokenRollPrivacy.Blind =this.remove(ID, Blind)
-                        TokenRollPrivacy.Self =this.remove(ID, Self)
+                        TokenRollPrivacy.Private = this.remove(ID, TokenRollPrivacy.Private)
+                        TokenRollPrivacy.Blind = this.remove(ID, TokenRollPrivacy.Blind)
+                        TokenRollPrivacy.Self = this.remove(ID, TokenRollPrivacy.Self)
 
                         TokenRollPrivacy.Private.push(ID);
-                        console.log(Private[0])
                     }
                 },
                 Blind: {
                     label: "Blind GM",
                     callback: () => {
-                        TokenRollPrivacy.Private =this.remove(ID, Private)
-                        TokenRollPrivacy.Blind =this.remove(ID, Blind)
-                        TokenRollPrivacy.Self =this.remove(ID, Self)
+                        TokenRollPrivacy.Private = this.remove(ID,TokenRollPrivacy.Private)
+                        TokenRollPrivacy.Blind = this.remove(ID, TokenRollPrivacy.Blind)
+                        TokenRollPrivacy.Self = this.remove(ID, TokenRollPrivacy.Self)
 
                         TokenRollPrivacy.Blind.push(ID);
                     }
@@ -70,9 +69,9 @@ class TokenRollPrivacy extends FormApplication {
                 self: {
                     label: "Self",
                     callback: () => {
-                        TokenRollPrivacy.Private =this.remove(ID, Private)
-                        TokenRollPrivacy.Blind =this.remove(ID, Blind)
-                        TokenRollPrivacy.Self =this.remove(ID, Self)
+                        TokenRollPrivacy.Private =this.remove(ID, TokenRollPrivacy.Private)
+                        TokenRollPrivacy.Blind =this.remove(ID, TokenRollPrivacy.Blind)
+                        TokenRollPrivacy.Self =this.remove(ID, TokenRollPrivacy.Self)
 
                         TokenRollPrivacy.Self.push(ID);
                     }
