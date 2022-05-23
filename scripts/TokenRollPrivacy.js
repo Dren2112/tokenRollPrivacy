@@ -27,15 +27,12 @@ class TokenRollPrivacy extends FormApplication {
                     callback: () => {console.log("Self selected")}
                 },
                 default: "none",
-                render: html => console.log("Register interactivity in the rendered dialog"),
-                close: html => console.log("This always is logged no matter which option is chosen")
             }
-        });
-        dia.render(true);
+        })
 
         let diaBtn = $(`<a class="open-dia" title="Roll Privacy" ><i class ="fas fa-dice-d20"></i> Roll Privacy </a>`)
         diaBtn.click(ev => {
-            Dialog.prompt(dia)
+            Dialog.render(true);
         })
 
         let titleElement = html.closest('.app').find('.window-title');
