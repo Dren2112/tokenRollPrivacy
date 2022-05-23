@@ -6,7 +6,7 @@ class TokenRollPrivacy extends FormApplication {
 
     static _initButton(app, html, data) {
 
-        let dia = new Dialog({
+        const dia = new Dialog({
             title: "Roll Privacy",
             content: 'Select the default roll privacy for this actor',
             buttons: {
