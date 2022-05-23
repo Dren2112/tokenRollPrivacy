@@ -5,8 +5,10 @@ class TokenRollPrivacy extends FormApplication {
 
     static _initButton(app, html, data) {
 
-        let diaBtn = $(`<a class="open-dia" title="Roll Privacy" > Roll Privacy </a>`)
-        diaBtn.onclick = console.log("Button Clicked Woo!")
+        let diaBtn = $(`<a class="open-dia" title="Roll Privacy" ><i class ="fas fa-dice-d20"></i> Roll Privacy </a>`)
+        diaBtn.click(ev => {
+            console.log("BUTTON CLICKED WOO!")
+        })
 
         let titleElement = html.closest('.app').find('.window-title');
         diaBtn.insertAfter(titleElement);
