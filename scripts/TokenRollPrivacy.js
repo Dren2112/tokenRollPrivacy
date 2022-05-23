@@ -23,9 +23,10 @@ class TokenRollPrivacy extends FormApplication {
     }
 
     static _initButton(app, html, data) {
+//TEST
+        console.log(TokenRollPrivacy.Private[0])
 
-
-        let ID = app.appId;
+        let ID = app.actor.data._id;
         let diaBtn = $(`<a class="open-dia" title="Roll Privacy" ><i class ="fas fa-dice-d20"></i> Roll Privacy </a>`)
         diaBtn.click(ev => {
             dia.render(true);
@@ -84,6 +85,7 @@ class TokenRollPrivacy extends FormApplication {
     }
     static override(msg){
         console.log(msg.data.speaker.actor)
+
         if(TokenRollPrivacy.Private.includes(msg.data.speaker.actor)){
             let GMs = ChatMessage.getWhisperRecipients("GM");
             let GMIds = GMs.map((u) => u.data._id);
