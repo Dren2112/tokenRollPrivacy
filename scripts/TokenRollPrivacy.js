@@ -84,7 +84,7 @@ class TokenRollPrivacy extends FormApplication {
     }
     static override(msg){
         console.log(msg)
-        if(TokenRollPrivacy.Private.includes(msg.speaker.actor)){
+        if(TokenRollPrivacy.Private.includes(msg.data.speaker.actor)){
             let GMs = ChatMessage.getWhisperRecipients("GM");
             let GMIds = GMs.map((u) => u.data._id);
             let updates = {
@@ -93,7 +93,7 @@ class TokenRollPrivacy extends FormApplication {
             msg.data.update(updates);
             console.log("message made private")
         }
-        if(TokenRollPrivacy.Blind.includes(msg.speaker.actor)){
+        if(TokenRollPrivacy.Blind.includes(msg.data.speaker.actor)){
             let GMs = ChatMessage.getWhisperRecipients("GM");
             let GMIds = GMs.map((u) => u.data._id);
             let updates = {
@@ -103,7 +103,7 @@ class TokenRollPrivacy extends FormApplication {
             msg.data.update(updates);
             console.log("message made blind")
         }
-        if(TokenRollPrivacy.Self.includes(msg.speaker.actor)){
+        if(TokenRollPrivacy.Self.includes(msg.data.speaker.actor)){
             let updates = {
                 blind: true,
                 whisper: msg.user,
