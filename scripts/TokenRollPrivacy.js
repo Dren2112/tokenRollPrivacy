@@ -32,7 +32,7 @@ class TokenRollPrivacy extends FormApplication {
 
         let diaBtn = $(`<a class="open-dia" title="Roll Privacy" ><i class ="fas fa-dice-d20"></i> Roll Privacy </a>`)
         diaBtn.click(ev => {
-            prompt(dia);
+            Dialog.prompt(dia)
         })
 
         let titleElement = html.closest('.app').find('.window-title');
