@@ -7,23 +7,32 @@ const dia = new Dialog({
     buttons: {
         none: {
             label: "Default",
-            callback: () => {console.log("default selected")}
+            callback: () => {
+                console.log("default selected")
+            }
         },
         Private_GM: {
             label: "Private GM",
-            callback: () => {console.log("Private GM selected")}
+            callback: () => {
+                console.log("Private GM selected")
+            }
         },
         Blind: {
             label: "Blind GM",
-            callback: () => {console.log("Blind GM selected")}
+            callback: () => {
+                console.log("Blind GM selected")
+            }
         },
         self: {
             label: "Self",
-            callback: () => {console.log("Self selected")}
-        },
+            callback: () => {
+                console.log("Self selected")
+            }
+        }
+    },
         default: "none",
-    }
-})
+
+});
 
 
 
