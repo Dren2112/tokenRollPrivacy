@@ -83,7 +83,7 @@ class TokenRollPrivacy extends FormApplication {
 
     }
     static override(msg){
-        console.log(msg)
+        console.log(msg.data.speaker.actor)
         if(TokenRollPrivacy.Private.includes(msg.data.speaker.actor)){
             let GMs = ChatMessage.getWhisperRecipients("GM");
             let GMIds = GMs.map((u) => u.data._id);
