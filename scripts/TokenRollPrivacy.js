@@ -1,7 +1,5 @@
-console.log("Token Roll Privacy Init - 0.07")
-Hooks.on("ready", function(){
-    test.Test();
-});
+console.log("Token Roll Privacy Init")
+
 
 class TokenRollPrivacy extends FormApplication {
 
@@ -15,15 +13,17 @@ class TokenRollPrivacy extends FormApplication {
     }
 }
 
-class test extends Actor{
-    static Test(){
-        console.log(JSON.stringify(this.getRollData()))
-}
-}
+
+
 
     Hooks.on('renderActorSheet', (app, html, data) => {
     TokenRollPrivacy._initButton(app, html, data);
     });
+
+    Hooks.on("preCreateChatMessage", (msg, options, userId) => {
+        console.log("CHAT MESSAGE PRECREATED")
+    });
+
 
 
 
