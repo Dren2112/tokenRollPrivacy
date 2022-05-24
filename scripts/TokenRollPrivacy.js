@@ -24,9 +24,9 @@ class TokenRollPrivacy extends FormApplication {
 
     static _initButton(app, html, data) {
 
-        let Icon = '"fas fa-eye"';
         let ID = app.actor.data._id;
-        let BtnString = '<a class="open-dia" title="Roll Privacy" ><i class=' + Icon + '></i> Roll Privacy </a>'
+
+        let BtnString = '<a class="open-dia" title="Roll Privacy" ><i class="fas fa-eye"></i> Roll Privacy </a>'
         console.log(BtnString)
         let diaBtn = $(BtnString)
         diaBtn.click(ev => {
@@ -36,22 +36,28 @@ class TokenRollPrivacy extends FormApplication {
         let titleElement = html.closest('.app').find('.window-title');
         diaBtn.insertAfter(titleElement);
 
-        const dia = new Dialog({
+        let Content = "Select the default roll privacy for this actor - Currently set to Default"
+        if(TokenRollPrivacy.Private.includes(ID)){
+            Content = "Select the default roll privacy for this actor - Currently set to Private"
+        }else if(TokenRollPrivacy.Self.includes(ID)){
+            Content = "Select the default roll privacy for this actor - Currently set to Self"
+        }else if(TokenRollPrivacy.Blind.includes(ID)){
+            Content = "Select the default roll privacy for this actor - Currently set to Blind"
+        }
+
+        let dia = new Dialog({
             title: "Roll Privacy",
-            content: 'Select the default roll privacy for this actor',
+            content: Content,
             buttons: {
                 none: {
-                    icon: '<i class="fas fa-eye"></i>',
                     label: "Default",
                     callback: () => {
                         TokenRollPrivacy.Private = this.remove(ID, TokenRollPrivacy.Private)
                         TokenRollPrivacy.Blind = this.remove(ID, TokenRollPrivacy.Blind)
                         TokenRollPrivacy.Self = this.remove(ID, TokenRollPrivacy.Self)
-                        Icon = '"fas fa-eye"'
                     }
                 },
                 Private_GM: {
-                    icon: '<i class="fas fa-eye-slash"></i>',
                     label: "Private GM",
                     callback: () => {
                         TokenRollPrivacy.Private = this.remove(ID, TokenRollPrivacy.Private)
@@ -59,11 +65,9 @@ class TokenRollPrivacy extends FormApplication {
                         TokenRollPrivacy.Self = this.remove(ID, TokenRollPrivacy.Self)
 
                         TokenRollPrivacy.Private.push(ID);
-                        Icon = '"fas fa-eye-slash"'
                     }
                 },
                 Blind: {
-                    icon: '<i class="fas fa-eye-low-vision"></i>',
                     label: "Blind GM",
                     callback: () => {
                         TokenRollPrivacy.Private = this.remove(ID,TokenRollPrivacy.Private)
@@ -71,11 +75,9 @@ class TokenRollPrivacy extends FormApplication {
                         TokenRollPrivacy.Self = this.remove(ID, TokenRollPrivacy.Self)
 
                         TokenRollPrivacy.Blind.push(ID);
-                        Icon = '"fas fa-eye-low-vision"'
                     }
                 },
                 self: {
-                    icon: '<i class="fas fa-arrows-to-eye"></i>',
                     label: "Self",
                     callback: () => {
                         TokenRollPrivacy.Private =this.remove(ID, TokenRollPrivacy.Private)
@@ -83,7 +85,6 @@ class TokenRollPrivacy extends FormApplication {
                         TokenRollPrivacy.Self =this.remove(ID, TokenRollPrivacy.Self)
 
                         TokenRollPrivacy.Self.push(ID);
-                        Icon = '"fas fa-arrows-to--eye"'
                     }
                 }
             },
