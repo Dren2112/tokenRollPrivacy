@@ -27,6 +27,7 @@ class TokenRollPrivacy extends FormApplication {
         let Icon = '"fas fa-eye"';
         let ID = app.actor.data._id;
         let BtnString = '`<a class="open-dia" title="Roll Privacy" ><i class =' + Icon + '></i> Roll Privacy </a>`'
+        console.log(BtnString)
         let diaBtn = $(BtnString)
         diaBtn.click(ev => {
             dia.render(true);
