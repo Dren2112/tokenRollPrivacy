@@ -30,67 +30,66 @@ class TokenRollPrivacy extends FormApplication {
         console.log(BtnString)
         let diaBtn = $(BtnString)
         diaBtn.click(ev => {
+            let Content = "Select the default roll privacy for this actor - Currently set to Default"
+            if(TokenRollPrivacy.Private.includes(ID)){
+                Content = "Select the default roll privacy for this actor - Currently set to Private"
+            }else if(TokenRollPrivacy.Self.includes(ID)){
+                Content = "Select the default roll privacy for this actor - Currently set to Self"
+            }else if(TokenRollPrivacy.Blind.includes(ID)){
+                Content = "Select the default roll privacy for this actor - Currently set to Blind"
+            }
+
+            let dia = new Dialog({
+                title: "Roll Privacy",
+                content: Content,
+                buttons: {
+                    none: {
+                        label: "Default",
+                        callback: () => {
+                            TokenRollPrivacy.Private = this.remove(ID, TokenRollPrivacy.Private)
+                            TokenRollPrivacy.Blind = this.remove(ID, TokenRollPrivacy.Blind)
+                            TokenRollPrivacy.Self = this.remove(ID, TokenRollPrivacy.Self)
+                        }
+                    },
+                    Private_GM: {
+                        label: "Private GM",
+                        callback: () => {
+                            TokenRollPrivacy.Private = this.remove(ID, TokenRollPrivacy.Private)
+                            TokenRollPrivacy.Blind = this.remove(ID, TokenRollPrivacy.Blind)
+                            TokenRollPrivacy.Self = this.remove(ID, TokenRollPrivacy.Self)
+
+                            TokenRollPrivacy.Private.push(ID);
+                        }
+                    },
+                    Blind: {
+                        label: "Blind GM",
+                        callback: () => {
+                            TokenRollPrivacy.Private = this.remove(ID,TokenRollPrivacy.Private)
+                            TokenRollPrivacy.Blind = this.remove(ID, TokenRollPrivacy.Blind)
+                            TokenRollPrivacy.Self = this.remove(ID, TokenRollPrivacy.Self)
+
+                            TokenRollPrivacy.Blind.push(ID);
+                        }
+                    },
+                    self: {
+                        label: "Self",
+                        callback: () => {
+                            TokenRollPrivacy.Private =this.remove(ID, TokenRollPrivacy.Private)
+                            TokenRollPrivacy.Blind =this.remove(ID, TokenRollPrivacy.Blind)
+                            TokenRollPrivacy.Self =this.remove(ID, TokenRollPrivacy.Self)
+
+                            TokenRollPrivacy.Self.push(ID);
+                        }
+                    }
+                },
+                default: "none",
+
+            });
             dia.render(true);
         })
 
         let titleElement = html.closest('.app').find('.window-title');
         diaBtn.insertAfter(titleElement);
-
-        let Content = "Select the default roll privacy for this actor - Currently set to Default"
-        if(TokenRollPrivacy.Private.includes(ID)){
-            Content = "Select the default roll privacy for this actor - Currently set to Private"
-        }else if(TokenRollPrivacy.Self.includes(ID)){
-            Content = "Select the default roll privacy for this actor - Currently set to Self"
-        }else if(TokenRollPrivacy.Blind.includes(ID)){
-            Content = "Select the default roll privacy for this actor - Currently set to Blind"
-        }
-
-        let dia = new Dialog({
-            title: "Roll Privacy",
-            content: Content,
-            buttons: {
-                none: {
-                    label: "Default",
-                    callback: () => {
-                        TokenRollPrivacy.Private = this.remove(ID, TokenRollPrivacy.Private)
-                        TokenRollPrivacy.Blind = this.remove(ID, TokenRollPrivacy.Blind)
-                        TokenRollPrivacy.Self = this.remove(ID, TokenRollPrivacy.Self)
-                    }
-                },
-                Private_GM: {
-                    label: "Private GM",
-                    callback: () => {
-                        TokenRollPrivacy.Private = this.remove(ID, TokenRollPrivacy.Private)
-                        TokenRollPrivacy.Blind = this.remove(ID, TokenRollPrivacy.Blind)
-                        TokenRollPrivacy.Self = this.remove(ID, TokenRollPrivacy.Self)
-
-                        TokenRollPrivacy.Private.push(ID);
-                    }
-                },
-                Blind: {
-                    label: "Blind GM",
-                    callback: () => {
-                        TokenRollPrivacy.Private = this.remove(ID,TokenRollPrivacy.Private)
-                        TokenRollPrivacy.Blind = this.remove(ID, TokenRollPrivacy.Blind)
-                        TokenRollPrivacy.Self = this.remove(ID, TokenRollPrivacy.Self)
-
-                        TokenRollPrivacy.Blind.push(ID);
-                    }
-                },
-                self: {
-                    label: "Self",
-                    callback: () => {
-                        TokenRollPrivacy.Private =this.remove(ID, TokenRollPrivacy.Private)
-                        TokenRollPrivacy.Blind =this.remove(ID, TokenRollPrivacy.Blind)
-                        TokenRollPrivacy.Self =this.remove(ID, TokenRollPrivacy.Self)
-
-                        TokenRollPrivacy.Self.push(ID);
-                    }
-                }
-            },
-            default: "none",
-
-        });
 
     }
     static override(msg){
