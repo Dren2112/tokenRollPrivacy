@@ -88,6 +88,7 @@ class TokenRollPrivacy extends FormApplication {
             dia.render(true);
         })
 
+        html.closest('.app').find('.open-dia').remove();
         let titleElement = html.closest('.app').find('.window-title');
         diaBtn.insertAfter(titleElement);
 
